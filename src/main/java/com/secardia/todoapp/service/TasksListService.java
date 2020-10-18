@@ -18,36 +18,24 @@ public class TasksListService {
         this.tasksListRepository = tasksListRepository;
     }
 
+    // Return all the tasks lists
     public List<TasksList> getTasksLists() {
         return tasksListRepository.findAll();
     }
 
+    // Return the tasks list with given id
     public TasksList getTasksList(Long id) {
         return tasksListRepository.findById(id).orElseThrow(() -> new RuntimeException("No tasks list found with ID - " + id));
     }
 
+    // Save and return the tasks list
     public TasksList saveTasksList(TasksList tasksList) {
         return tasksListRepository.save(tasksList);
     }
 
-    public Task addTask(Long tasksListId, Task task) {
-        TasksList tasksList = getTasksList(tasksListId);
-        tasksList.addTask(task);
-        tasksListRepository.save(tasksList);
-        return task;
-    }
-
+    // Deletethe tasks list
     public void deleteTasksList(Long tasksListId) {
         tasksListRepository.deleteById(tasksListId);
     }
 
-
-
-
-    /*public Task checkTask(Long id, Boolean checked) {
-        Task task = taskRepository.findById(id).orElseThrow(() -> new RuntimeException("No task found with ID - " + id));
-        task.setDone(checked);
-        taskRepository.save(task);
-        return task;
-    }*/
 }

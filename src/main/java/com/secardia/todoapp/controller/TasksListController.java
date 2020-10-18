@@ -18,24 +18,21 @@ public class TasksListController {
     @Autowired
     TasksListService tasksListService;
 
+    // Return all the tasks lists
     @GetMapping(path = TasksListLinks.LIST_TASKSLISTS)
     public ResponseEntity<List<TasksList>> listTasksLists() {
         List<TasksList> resource = tasksListService.getTasksLists();
         return ResponseEntity.status(HttpStatus.OK).body(resource);
     }
 
-    @GetMapping(path = TasksListLinks.LIST_TASKSLIST)
-    public ResponseEntity<TasksList> tasksList(@RequestBody Long tasksListId) {
-        TasksList resource = tasksListService.getTasksList(tasksListId);
-        return ResponseEntity.status(HttpStatus.OK).body(resource);
-    }
-
+    // Save and return the tasks list
     @PostMapping(path = TasksListLinks.SAVE_TASKSLIST)
     public ResponseEntity<TasksList> saveTasksList(@RequestBody TasksList tasksList) {
         TasksList resource = tasksListService.saveTasksList(tasksList);
         return ResponseEntity.status(HttpStatus.OK).body(resource);
     }
 
+    // Deletethe tasks list
     @DeleteMapping(path = TasksListLinks.DELETE_TASKSLIST)
     public ResponseEntity<Void> deleteTask(@RequestParam Long tasksListId) {
         tasksListService.deleteTasksList(tasksListId);
