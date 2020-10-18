@@ -1,10 +1,12 @@
 package com.secardia.todoapp.service;
 
+import com.secardia.todoapp.entity.Task;
 import com.secardia.todoapp.entity.TasksList;
 
 import com.secardia.todoapp.repository.TasksListRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -28,9 +30,18 @@ public class TasksListService {
         return tasksListRepository.save(tasksList);
     }
 
+    public Task addTask(Long tasksListId, Task task) {
+        TasksList tasksList = getTasksList(tasksListId);
+        tasksList.addTask(task);
+        tasksListRepository.save(tasksList);
+        return task;
+    }
+
     public void deleteTasksList(Long tasksListId) {
         tasksListRepository.deleteById(tasksListId);
     }
+
+
 
 
     /*public Task checkTask(Long id, Boolean checked) {

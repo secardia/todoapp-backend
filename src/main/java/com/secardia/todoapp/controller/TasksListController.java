@@ -1,5 +1,6 @@
 package com.secardia.todoapp.controller;
 
+import com.secardia.todoapp.entity.Task;
 import com.secardia.todoapp.entity.TasksList;
 import com.secardia.todoapp.links.TasksListLinks;
 import com.secardia.todoapp.service.TasksListService;
@@ -24,15 +25,15 @@ public class TasksListController {
     }
 
     @GetMapping(path = TasksListLinks.LIST_TASKSLIST)
-    public ResponseEntity<TasksList> tasksList(@RequestParam Long tasksListId) {
+    public ResponseEntity<TasksList> tasksList(@RequestBody Long tasksListId) {
         TasksList resource = tasksListService.getTasksList(tasksListId);
         return ResponseEntity.status(HttpStatus.OK).body(resource);
     }
 
-    @PostMapping(path = TasksListLinks.ADD_TASKSLIST)
+    @PostMapping(path = TasksListLinks.SAVE_TASKSLIST)
     public ResponseEntity<TasksList> saveTasksList(@RequestBody TasksList tasksList) {
         TasksList resource = tasksListService.saveTasksList(tasksList);
-        return ResponseEntity.status(HttpStatus.CREATED).body(resource);
+        return ResponseEntity.status(HttpStatus.OK).body(resource);
     }
 
     @DeleteMapping(path = TasksListLinks.DELETE_TASKSLIST)

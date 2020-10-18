@@ -40,4 +40,8 @@ public class TasksList {
     public void setTasksList(ArrayList<Task> tasksList) {
         this.tasksList = tasksList;
     }
+
+    public void addTask(Task task) {
+        this.tasksList.add(task);
+    }
 }
