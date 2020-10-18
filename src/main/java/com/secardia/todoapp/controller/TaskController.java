@@ -35,4 +35,10 @@ public class TaskController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @PutMapping(path = TaskLinks.CHECK_TASK)
+    public ResponseEntity<Task> checkTask(@RequestParam Long taskId, @RequestParam Boolean checked) {
+        Task resource = taskService.checkTask(taskId, checked);
+        return ResponseEntity.status(HttpStatus.OK).body(resource);
+    }
+
 }

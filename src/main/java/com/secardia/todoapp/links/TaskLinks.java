@@ -8,5 +8,6 @@ public class TaskLinks {
     public static final String LIST_TASKS = "/tasks";
     public static final String ADD_TASK = "/addtask";
     public static final String DELETE_TASK = "/deletetask";
+    public static final String CHECK_TASK = "/checktask";
 
 }

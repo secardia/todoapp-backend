@@ -5,6 +5,7 @@ import com.secardia.todoapp.repository.TaskRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class TaskService {
@@ -24,5 +25,12 @@ public class TaskService {
     }
 
     public void deleteTask(Long id) { taskRepository.deleteById(id); }
+
+    public Task checkTask(Long id, Boolean checked) {
+        Task task = taskRepository.findById(id).orElseThrow(() -> new RuntimeException("No task found with ID - " + id));
+        task.setDone(checked);
+        taskRepository.save(task);
+        return task;
+    }
 
 }
