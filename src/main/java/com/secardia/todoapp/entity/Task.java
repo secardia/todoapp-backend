@@ -8,9 +8,7 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String taskToDo;
-
     private Boolean done = false;
 
     public Long getId() {
