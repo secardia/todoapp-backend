@@ -1,6 +1,10 @@
-# Todoapp
+# Todoapp-backend
 
 This project was generated with [Spring initializr](https://start.spring.io/).
+
+## Requirements
+
+You will need to have Java 11 in your path.
 
 ## Run server
 
